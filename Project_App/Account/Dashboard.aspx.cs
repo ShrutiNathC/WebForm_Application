@@ -110,8 +110,6 @@ namespace Project_App.Account
                     Email_txt.Text = user.Email;
                     Password_txt.Text = user.Password;
                     Button1.Text = "Edit";
-
-                    //userOperation.EditAccount(user);
                 }
             }
         }

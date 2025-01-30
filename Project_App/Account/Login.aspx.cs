@@ -31,7 +31,6 @@ namespace Project_App.Account
             {
                 Session["Name"] = name;
                 Response.Redirect("~/Account/Dashboard.aspx?value=" + name);
-                //Response.Redirect("~/Account/Dashboard.aspx");
             }
             else
             {
