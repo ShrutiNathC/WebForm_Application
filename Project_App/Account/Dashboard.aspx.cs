@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Microsoft.Ajax.Utilities;
 using Project_App.Functionality;
 using Project_App.Models;
 using Project_App.Service;
@@ -19,17 +20,18 @@ namespace Project_App.Account
             userOperation = new UserOperation();
         }
 
-        protected void Page_Init(object sender, EventArgs e)
-        {
-            GridView1.RowDeleting += new GridViewDeleteEventHandler(GridView1_RowDeleting);
-            GridView1.RowEditing += new GridViewEditEventHandler(GridView1_RowEditing);
-        }
+        //protected void Page_Init(object sender, EventArgs e)
+        //{
+        //    GridView1.RowDeleting = new GridViewDeleteEventHandler(GridView1_RowDeleting);
+        //    GridView1.RowEditing += new GridViewEditEventHandler(GridView1_RowEditing);
+        //}
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 BindGrid();
+                //userOperation.GetUsers();
 
                 if (Session["Name"] == null)
                 {
@@ -92,8 +94,16 @@ namespace Project_App.Account
             if (e.RowIndex >= 0 && e.RowIndex < GridView1.Rows.Count)
             {
                 int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
-                userOperation.DeleteAccount(id);
-                BindGrid();
+                if (id == 0)
+                {
+                    return;
+                }
+                var temp = userOperation.DeleteAccount(id);
+                if (temp > 0)
+                {
+                    BindGrid();
+                    //GridView1.DataBind();
+                }
             }
         }
 
@@ -109,7 +119,7 @@ namespace Project_App.Account
                     Name_txt.Text = user.Name;
                     Email_txt.Text = user.Email;
                     Password_txt.Text = user.Password;
-                    Button1.Text = "Edit";
+                    Button1.Text = "Update";
                 }
             }
         }

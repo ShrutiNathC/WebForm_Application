@@ -21,12 +21,12 @@
             </div>
             <div class="row my-1" style="width: 45%">
                 <asp:Label ID="Label3" runat="server" Text="Password" CssClass="col"></asp:Label>
-                <asp:TextBox ID="Password_txt" runat="server" CssClass="col" TextMode="Password"></asp:TextBox>
+                <asp:TextBox ID="Password_txt" runat="server" CssClass="col"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" CssClass="col" ControlToValidate="Password_txt" ErrorMessage="Enter Password" ForeColor="Red"></asp:RequiredFieldValidator>
             </div>
             <div class="row my-1" style="width: 45%">
                 <asp:Label ID="Label5" runat="server" Text="Confirm Password" CssClass="col"></asp:Label>
-                <asp:TextBox ID="Confirm_txt" runat="server" CssClass="col" TextMode="Password"></asp:TextBox>
+                <asp:TextBox ID="Confirm_txt" runat="server" CssClass="col"></asp:TextBox>
                 <asp:CompareValidator ID="CompareValidator1" runat="server" CssClass="col" ControlToCompare="Password_txt" ControlToValidate="Confirm_txt" ErrorMessage="Enter Same Password" ForeColor="Red"></asp:CompareValidator>
             </div>
             <asp:Button ID="Button1" runat="server" Text="Submit" OnCLick="Button1_Submit" />
@@ -50,6 +50,6 @@
         </Columns>
         <EditRowStyle HorizontalAlign="Center" VerticalAlign="Middle" BackColor="#CCCCCC" BorderColor="#000066" BorderStyle="Double" BorderWidth="5px"></EditRowStyle>
         </asp:GridView>
-
+        
     </div>
 </asp:Content>
