@@ -28,6 +28,7 @@ namespace Project_App.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Button2.Visible = false;
             if (!IsPostBack)
             {
                 BindGrid();
@@ -102,7 +103,6 @@ namespace Project_App.Account
                 if (temp > 0)
                 {
                     BindGrid();
-                    //GridView1.DataBind();
                 }
             }
         }
@@ -119,9 +119,18 @@ namespace Project_App.Account
                     Name_txt.Text = user.Name;
                     Email_txt.Text = user.Email;
                     Password_txt.Text = user.Password;
+                    Confirm_txt.Text = user.Password;
                     Button1.Text = "Update";
+                    Button2.Visible = true;
                 }
             }
+        }
+
+        protected void Button2_Cancel(object sender, EventArgs e)
+        {
+            Button2.Visible = false;
+            BindGrid();
+            Page.Response.Redirect(Page.Request.Url.ToString(), true);
         }
     }
 }

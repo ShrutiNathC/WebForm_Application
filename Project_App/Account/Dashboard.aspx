@@ -29,7 +29,10 @@
                 <asp:TextBox ID="Confirm_txt" runat="server" CssClass="col"></asp:TextBox>
                 <asp:CompareValidator ID="CompareValidator1" runat="server" CssClass="col" ControlToCompare="Password_txt" ControlToValidate="Confirm_txt" ErrorMessage="Enter Same Password" ForeColor="Red"></asp:CompareValidator>
             </div>
-            <asp:Button ID="Button1" runat="server" Text="Submit" OnCLick="Button1_Submit" />
+            <div style="width: 45%">
+                <asp:Button ID="Button1" runat="server" Text="Submit" OnCLick="Button1_Submit" />
+                <asp:Button ID="Button2" runat="server" Text="Cancel" OnClick="Button2_Cancel"/>
+            </div>
         </asp:Panel>
         
     </div>
