@@ -52,5 +52,11 @@ namespace Project_App.Service
             }
             return 1;
         }
+
+        List<Users> IUserOperation.SearchbyName(string Name)
+        {
+            var search = userContext.Users.Where(s => s.Name.Contains(Name)).ToList();
+            return search;
+        }
     }
 }

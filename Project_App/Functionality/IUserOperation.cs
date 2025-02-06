@@ -14,5 +14,6 @@ namespace Project_App.Functionality
         int EditAccount(Users users);
         int DeleteAccount(int Id);
         List<Users> GetUsers();
+        List<Users> SearchbyName(string Name);
     }
 }

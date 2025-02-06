@@ -132,5 +132,30 @@ namespace Project_App.Account
             BindGrid();
             Page.Response.Redirect(Page.Request.Url.ToString(), true);
         }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            BindGrid();
+        }
+
+        protected void Search_Button_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Search_TxtBox.Text))
+            {
+                string name = Search_TxtBox.Text;
+                var searchResults = userOperation.SearchbyName(name);
+                if (searchResults != null)
+                {
+                    GridView1.DataSource = searchResults;
+                    GridView1.DataBind();
+                }
+                else
+                {
+                    Response.Write("No Results Found");
+                }
+                
+            }
+        }
     }
 }

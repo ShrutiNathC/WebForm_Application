@@ -5,7 +5,6 @@
             Welcome <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         </h1>
     </div>
-    <br />
     <div class="container align-items-start" style="padding: 5px 0px 5px 0px">
         <asp:Panel ID="Panel1" runat="server">
             <asp:HiddenField ID="UserIdHiddenField" runat="server" />
@@ -38,7 +37,12 @@
     </div>
     <br />
     <div class="flex align-text-center gap-5">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="1" CellSpacing="1" EditRowStyle-HorizontalAlign="Center" EditRowStyle-VerticalAlign="Middle" DataKeyNames="Id" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing">
+        <div class="row" style="width: 45%">
+            <asp:TextBox ID="Search_TxtBox" runat="server" CssClass="col"></asp:TextBox>
+            <asp:Button ID="Search_Button" runat="server" Text="Search" OnClick="Search_Button_Click" CssClass="col" CausesValidation="false"/>
+        </div>
+        <br />
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="1" CellSpacing="1" EditRowStyle-HorizontalAlign="Center" EditRowStyle-VerticalAlign="Middle" DataKeyNames="Id" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="4">
         <Columns>
             <asp:BoundField DataField="Id"  HeaderText="Id" SortExpression="Id" />
             <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
@@ -52,6 +56,8 @@
             </asp:TemplateField>
         </Columns>
         <EditRowStyle HorizontalAlign="Center" VerticalAlign="Middle" BackColor="#CCCCCC" BorderColor="#000066" BorderStyle="Double" BorderWidth="5px"></EditRowStyle>
+            <PagerStyle BorderStyle="Solid" BorderWidth="1px" />
+            <RowStyle BorderStyle="Solid" BorderWidth="1px" HorizontalAlign="Left" VerticalAlign="Middle" />
         </asp:GridView>
         
     </div>
