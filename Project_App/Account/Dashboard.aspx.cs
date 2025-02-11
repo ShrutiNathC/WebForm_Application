@@ -20,11 +20,6 @@ namespace Project_App.Account
             userOperation = new UserOperation();
         }
 
-        //protected void Page_Init(object sender, EventArgs e)
-        //{
-        //    GridView1.RowDeleting = new GridViewDeleteEventHandler(GridView1_RowDeleting);
-        //    GridView1.RowEditing += new GridViewEditEventHandler(GridView1_RowEditing);
-        //}
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -139,7 +134,7 @@ namespace Project_App.Account
             BindGrid();
         }
 
-        protected void Search_Button_Click(object sender, EventArgs e)
+        protected void Search_TxtBox_TextChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(Search_TxtBox.Text))
             {
@@ -154,8 +149,14 @@ namespace Project_App.Account
                 {
                     Response.Write("No Results Found");
                 }
-                
+
             }
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            Search_TxtBox.Text = string.Empty;
+            Page.Response.Redirect(Page.Request.Url.ToString(), true);
         }
     }
 }
